@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -50,7 +49,7 @@ public class EmployeeController {
         employeesDB.put(employee.getId(), employee);
 
         // return craet success message
-        return ResponseEntity.ok("Employee created");
+        return ResponseEntity.ok("Employee had created");
     }
 
     // update employee
@@ -65,18 +64,11 @@ public class EmployeeController {
 
         // Apply the partial updates to the existing employee
         Employee existingEmployee = employeesDB.get(id);
-        if (employee.getFirstname() != null) {
-            existingEmployee.setFirstname(employee.getFirstname());
-        }
-        if (employee.getLastname() != null) {
-            existingEmployee.setLastname(employee.getLastname());
-        }
-        if (employee.getSalary() != 0) {
-            existingEmployee.setSalary(employee.getSalary());
-        }
-        if (employee.getBirthdate() != null) {
-            existingEmployee.setBirthdate(employee.getBirthdate());
-        }
+
+        existingEmployee.setFirstname(employee.getFirstname());
+        existingEmployee.setLastname(employee.getLastname());
+        existingEmployee.setSalary(employee.getSalary());
+        existingEmployee.setBirthdate(employee.getBirthdate());
 
         // Save the updated employee back to the database
         employeesDB.put(id, existingEmployee);
