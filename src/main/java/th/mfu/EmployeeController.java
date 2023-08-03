@@ -64,11 +64,18 @@ public class EmployeeController {
 
         // Apply the partial updates to the existing employee
         Employee existingEmployee = employeesDB.get(id);
-
-        existingEmployee.setFirstname(employee.getFirstname());
-        existingEmployee.setLastname(employee.getLastname());
-        existingEmployee.setSalary(employee.getSalary());
-        existingEmployee.setBirthdate(employee.getBirthdate());
+        if (employee.getFirstname() != null) {
+            existingEmployee.setFirstname(employee.getFirstname());
+        }
+        if (employee.getLastname() != null) {
+            existingEmployee.setLastname(employee.getLastname());
+        }
+        if (employee.getSalary() != 0) {
+            existingEmployee.setSalary(employee.getSalary());
+        }
+        if (employee.getBirthdate() != null) {
+            existingEmployee.setBirthdate(employee.getBirthdate());
+        }
 
         // Save the updated employee back to the database
         employeesDB.put(id, existingEmployee);
