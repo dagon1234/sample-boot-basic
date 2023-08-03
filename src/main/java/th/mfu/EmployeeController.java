@@ -59,7 +59,8 @@ public class EmployeeController {
         // update employee
         // Check if the employee ID exists in the database or any other validation
         if (!employeesDB.containsKey(id)) {
-            return ResponseEntity.notFound().build();
+            // return error message
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
         }
 
         // Apply the partial updates to the existing employee
@@ -87,6 +88,10 @@ public class EmployeeController {
     // delete employee
     @DeleteMapping("/employees/{id}")
     public ResponseEntity<String> deleteEmployee(@PathVariable long id) {
+        if (!employeesDB.containsKey(id)) {
+            // return error message
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
+        }
 
         // delete employee
         employeesDB.remove(id);
