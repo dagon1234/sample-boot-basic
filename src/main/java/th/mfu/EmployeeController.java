@@ -58,15 +58,6 @@ public class EmployeeController {
     public ResponseEntity<String> updateEmployee(@PathVariable long id, @RequestBody Employee employee) {
 
         // update employee
-        employeesDB.put(id, employee);
-
-        // return success message
-        return ResponseEntity.ok("Employee updated");
-    }
-
-    @PatchMapping("/employees/{id}")
-    public ResponseEntity<String> updatePatchEmployee(@PathVariable long id, @RequestBody Employee employee) {
-
         // Check if the employee ID exists in the database or any other validation
         if (!employeesDB.containsKey(id)) {
             return ResponseEntity.notFound().build();
@@ -91,7 +82,7 @@ public class EmployeeController {
         employeesDB.put(id, existingEmployee);
 
         // Return success message
-        return ResponseEntity.ok("Employee updated successfully");
+        return ResponseEntity.ok("Employee updated");
     }
 
     // delete employee
