@@ -33,7 +33,7 @@ public class EmployeeController {
 
     // select employee by id
     @GetMapping("/employees/{id}")
-    public ResponseEntity getEmployeeById(@PathVariable long id) {
+    public ResponseEntity getEmployeeById(@PathVariable Long id) {
         Optional<Employee> optEmployee = employeeRepository.findById(id);
         // check if id exists in db
         if (!optEmployee.isPresent()) {
@@ -148,7 +148,7 @@ public class EmployeeController {
 
     // delete employee
     @DeleteMapping("/employees/{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable long id) {
+    public ResponseEntity<String> deleteEmployee(@PathVariable Long id) {
         // check if id not exists
         if (!employeeRepository.existsById(id)) {
             // return error message

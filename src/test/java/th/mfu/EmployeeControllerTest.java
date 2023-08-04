@@ -49,12 +49,12 @@ public class EmployeeControllerTest {
     public void testDelete() {
 
         // Act
-        ResponseEntity response = controller.deleteEmployee(90);
+        ResponseEntity response = controller.deleteEmployee((long) 90);
         // Assert
         assertEquals(200, response.getStatusCodeValue());
 
         // try to check if employee is deleted
-        ResponseEntity response2 = controller.getEmployeeById(90);
+        ResponseEntity response2 = controller.getEmployeeById((long) 90);
         // check if response2 returned with proper status code
         assertEquals(404, response2.getStatusCodeValue());
     }
@@ -63,7 +63,7 @@ public class EmployeeControllerTest {
     @Test
     public void testUpdate() {
         // get employee with id 91
-        ResponseEntity response = controller.getEmployeeById(91);
+        ResponseEntity response = controller.getEmployeeById((long) 91);
 
         Employee emp = (Employee) response.getBody();
 
@@ -77,7 +77,7 @@ public class EmployeeControllerTest {
         assertEquals(200, response2.getStatusCodeValue());
 
         // check if employee is updated
-        ResponseEntity response3 = controller.getEmployeeById(91);
+        ResponseEntity response3 = controller.getEmployeeById((long) 91);
         // check if employee firstname is David
         assertEquals("David", ((Employee) response3.getBody()).getFirstname());
 
