@@ -15,17 +15,17 @@ public class Employee {
     private String lastname;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date birthdate;
+    private Date birthday;
     private long salary;
 
     public Employee() {
     }
 
-    public Employee(long id, String firstname, String lastname, Date birthdate, long salary) {
+    public Employee(long id, String firstname, String lastname, Date birthday, long salary) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthdate = birthdate;
+        this.birthday = birthday;
         this.salary = salary;
     }
 
@@ -53,12 +53,12 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public long getSalary() {
