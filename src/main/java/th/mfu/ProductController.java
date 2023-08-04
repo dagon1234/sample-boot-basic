@@ -26,7 +26,7 @@ public class ProductController {
         return productRepository.findAll();
     }
 
-    // select produvt by name
+    // select product by name
     @GetMapping("/products/name/{name}")
     public ResponseEntity getProductByName(@PathVariable String name) {
         List<Product> products = productRepository.findByNameStartingWith(name);
