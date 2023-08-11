@@ -28,7 +28,7 @@ public class EmployeeController {
     // select all employeee
     @GetMapping("/employees")
     public Collection<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employeeRepository.findByOrderByFirstnameDesc();
     }
 
     // select employee by id
