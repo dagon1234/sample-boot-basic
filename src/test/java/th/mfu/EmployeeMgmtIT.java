@@ -115,5 +115,14 @@ public class EmployeeMgmtIT {
     }
 
     // test partial update
+    @Test
+    public void testPartialUpdate() {
+        // add new employee
+        // set salary
+        // invoke update service
+        // query employee by name
+        // check if salary is updated
+        // check if firstname is not updated
+    }
 
 }
