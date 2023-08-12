@@ -1,4 +1,3 @@
-
 INSERT INTO employee (id, firstname, lastname, birthday, salary) VALUES (90, 'John', 'Doe', '1990-05-15', 60000);
 INSERT INTO employee (id, firstname, lastname, birthday, salary) VALUES (91, 'Jane', 'Smith', '1985-08-22', 75000);
 INSERT INTO employee (id, firstname, lastname, birthday, salary) VALUES (92, 'Michael', 'Johnson', '1988-11-10', 80000);
