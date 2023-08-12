@@ -22,7 +22,6 @@ public class Employee {
     private Long id;
 
     @JsonProperty("fname")
-    // @Column(name = "fname")
     private String firstname;
 
     @JsonProperty("lname")

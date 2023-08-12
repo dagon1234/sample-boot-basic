@@ -25,6 +25,9 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
     // select all employeee
     @GetMapping("/employees")
     public Collection<Employee> getAllEmployees() {
@@ -83,16 +86,27 @@ public class EmployeeController {
         return ResponseEntity.ok("Employee updated");
     }
 
-    // //update employee with some fields using patch
-    // @PatchMapping("/employees/{id}")
-    // public ResponseEntity<String> patchEmployee(@PathVariable long id,
-    // @RequestBody HashMap<String, Object> fieldstoupdate){
-    // //check if id not exists
-    // if(!employeesDB.containsKey(id)){
-    // //return error message
-    // return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not
-    // found");
-    // }
+    // partial update employee with some fields using patch
+    @PatchMapping("/employees/{id}")
+    public ResponseEntity<String> patchEmployee(@PathVariable long id, @RequestBody EmployeeDTO empDto) {
+        // find employee by id
+        Optional<Employee> optEmployee = employeeRepository.findById(id);
+        // check if id exists
+        if (!optEmployee.isPresent()) {
+            // return error message
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Employee not found");
+        }
+        // get employee from db
+        Employee emp = optEmployee.get();
+
+        // update employee by using mapper from dto
+        employeeMapper.updateEmployeeFromDto(empDto, emp);
+
+        // save to db
+        employeeRepository.save(emp);
+
+        return ResponseEntity.ok("Employee updated");
+    }
 
     // //get employee from db
     // Employee emp = employeesDB.get(id);
